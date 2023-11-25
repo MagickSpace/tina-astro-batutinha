@@ -1,0 +1,72 @@
+---
+ 
+import { Icon } from 'astro-icon'
+import { Image } from 'astro:assets';
+import { client } from '../../.tina/__generated__/client'
+
+import logo from "../assets/escola_turminha_do_batutinha.png";
+
+
+export const response = await client.queries.post({relativePath: "home.md"})
+export const email =  response.data?.post?.contatos?.email;
+export const facebook =  response.data?.post?.contatos?.facebook;
+export const instagram =  response.data?.post?.contatos?.instagram; 
+
+const social = [
+  { href: "mailto:"+[email], name: 'Email' , icon:'envelope'},
+  { href: [facebook], name: 'Facebook', icon:'facebook' },
+  { href: [instagram], name: 'Instagram', icon:'instagram' } 
+]
+---
+
+<div class=" "></div>
+
+<footer class=" border-t-2 border-tertiary bg-white">
+  <div
+    class=" max-w-7xl m-auto inset-x-0 bottom-0 z-20 flex w-full flex-col items-center  px-4 py-1 dark:border-purple-600 dark:bg-gray-800 lg:flex-row lg:px-8 lg:py-4">
+    <span class="flex flex-none flex-row items-center">
+      <a
+        class="title-font dark:text:gray-100 flex items-center justify-center font-medium text-gray-900 lg:justify-start"
+        href={import.meta.env.BASE_URL}>
+        
+        <Image src={logo} alt="Escolinha Turminha do Batutinha" width="128" height="64"  />
+        <span class="sr-only">Escola Turminha do Batutinha</span>
+      </a>
+      <p
+      class="ml-2   py-1 pl-2 text-sm text-gray-600 dark:border-purple-600 dark:text-gray-300">
+      Todos os direitos reservados © {new Date().getFullYear()} 
+      
+    </p>
+    </span>
+ 
+    <span class="mt-2 inline-flex grow justify-center lg:ml-auto lg:mt-0 lg:justify-end">
+   
+        {
+            social.map((s) =>
+              s.href ? (
+                <a
+                  href={s.href}
+                  class="ml-3 text-primary hover:text-secundary dark:text-purple-300 dark:hover:text-pink-300"
+                  rel="noopener noreferrer"
+                  target="_blank">
+                  <Icon pack="bi" name={s.icon} class=" h-6 w-6" />
+                  <span class="sr-only">{s.name}</span>
+                </a>
+              ) : (
+                ''
+              )
+            )
+        }
+           
+    </span>
+  </div>
+  <a
+              href="https://wa.me/5511998602917" target="_blank" style="    z-index: 99999;"
+              class="fixed bottom-10 right-5   inline-flex items-center justify-center rounded-full lg:rounded-md border border-transparent bg-green-600 p-3  text-lg font-medium  lg:hidden text-white  ">
+              <Icon
+                  pack="bi"
+                  name="whatsapp"
+                class=" h-5  w-5 me-2  bg-green-600"
+              /> Fale Conosco
+            </a>
+</footer>

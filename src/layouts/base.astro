@@ -1,0 +1,22 @@
+---
+import Header from '../components/header.astro'
+import Footer from '../components/footer.astro'
+
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-eval' 'unsafe-inline'; object-src 'none'">
+    <meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width" />  
+ 
+    <slot name="in-head" />
+    </head>
+    <body>
+      <Header />
+      <slot /> 
+      <Footer />
+  </body>
+</html>

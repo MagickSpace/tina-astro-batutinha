@@ -1,0 +1,97 @@
+---
+import { Icon } from 'astro-icon'
+import { Image } from 'astro:assets';
+import logo from "../assets/escola_turminha_do_batutinha.png";
+
+import { client } from '../../.tina/__generated__/client'
+
+export const response = await client.queries.post({relativePath: "home.md"})
+export const sobre =  response.data?.post?.menu?.sobre;
+export const matricula =  response.data?.post?.menu?.matricula;
+export const whatsapp =  response.data?.post?.menu?.whatsapp;
+
+const NavigationLinks = [
+  
+  { name: [sobre], href: '/sobre-a-escolinha-tuminha-do-batutinha' },
+  { name: [matricula], href: '/matriculas' }
+]
+
+const rawNumber = whatsapp.replace('-', '').replace('(', '').replace(')', '').replace(' ', '');
+---
+
+<div class="relative h-20 w-full">
+	<nav>
+	  <div class="z-50 mx-auto w-full  h-18 bg-white sm:bg-primary px-2  sm:px-0 lg:px-0">
+		<div class="relative flex h-20 items-center justify-between">
+		  <div class="flex flex-1 items-center h-20 justify-center lg:items-stretch lg:justify-start">
+			<div class="flex flex-shrink-0 items-center bg-white p-2">
+			  <a href="http://reginaldolima.com/turminha-do-batutinha/">
+                <Image src={logo} alt="Escolinha Turminha do Batutinha" width="128" height="64" class="block h-16" /> </a>
+			</div>
+			<div class=" lg:mx-4 lg:block">
+			  <div class="flex space-x-2 hidden sm:flex">
+				{ 
+				  NavigationLinks.map((item) => (
+					<a
+					  href={import.meta.env.BASE_URL + item.href}
+					  class={
+						(item.href.length > 0 && Astro.url.toString().includes(item.href)
+						  ? 'bg-secundary text-white'
+						  : 'text-white hover:bg-secundary hover:text-white') +
+						' rounded-md px-5 py-2 text-lg font-medium  lg:mt-4 '
+					  }
+					  aria-current={
+						item.href.length > 0 && Astro.url.toString().includes(item.href)
+						  ? 'page'
+						  : undefined
+					  }>
+					  {item.name}
+					</a>
+				  ))
+				}
+				<a
+				href={"https://wa.me/55"+rawNumber} target="_blank"
+				class="inline-flex items-center justify-center rounded-full lg:rounded-md border border-transparent bg-green-600 px-3 lg:px-5 lg:py-2 text-lg font-medium  lg:mt-4 text-white  ">
+				<Icon
+					pack="bi"
+					name="whatsapp"
+				    class=" h-5  w-5 lg:me-2 bg-green-600"
+				/><span class="hidden lg:block">{whatsapp}</span>
+			  </a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+       <!-- Mobile menu, show/hide based on menu state. -->
+    <div
+    
+    class="absolute inset-x-0 top-17 z-50 sm:hidden"
+    id="mobile-menu">
+    <div
+      class="flex justify-center border-b-2 border-t-2 border-tertiary  bg-primary px-4 py-2 font-semibold ">
+      {
+        NavigationLinks.map((item) => (
+          <a
+            href={import.meta.env.BASE_URL + item.href}
+            class:list={[
+              item.href.length > 0 && Astro.url.toString().includes(item.href)
+                ? 'bg-secundary text-white'
+                : 'text-white hover:bg-secundary hover:text-white',
+              ' rounded-md px-2 pb-1'
+            ]}
+            aria-current={
+              item.href.length > 0 && Astro.url.toString().includes(item.href)
+                ? 'page'
+                : undefined
+            }>
+            {item.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  
+	</nav>
+</div>
