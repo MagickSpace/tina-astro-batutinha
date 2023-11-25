@@ -7,9 +7,9 @@ import collectionContatos from './collections/rede-sociais';
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
 export default defineStaticConfig({
+  token: 'f04e33e1e4a5840e7097e897103b9a5eb2807142', // generated on app.tina.io,
+  clientId: '8458a132-a197-4036-ad56-c104fb06350b', // generated on app.tina.io
   branch,
-  clientId: null, // Get this from tina.io
-  token: null, // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "public",
