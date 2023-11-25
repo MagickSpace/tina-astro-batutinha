@@ -21,5 +21,7 @@ const tina = ({
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tina(), tailwind()]
+  integrations: [react(), tina(), tailwind()],
+  site: 'https://devreggie.github.io',
+  base: '/tina-astro-batutinha',
 });
