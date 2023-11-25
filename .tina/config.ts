@@ -13,6 +13,7 @@ export default defineStaticConfig({
   build: {
     outputFolder: "admin",
     publicFolder: "public",
+    basePath:"tina-astro-batutinha",
   },
   media: {
     tina: {
@@ -26,13 +27,13 @@ export default defineStaticConfig({
         name: "post",
         label: "Página Inicial",
         path: "content/posts",
-        ui: {
+        /*ui: {
           allowedActions: {
             create: false,
             delete: false,
           },
           router: () => '/',
-        },
+        },*/
         fields: [
           {
             label: "Menu",

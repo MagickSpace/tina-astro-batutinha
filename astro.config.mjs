@@ -24,4 +24,5 @@ export default defineConfig({
   integrations: [react(), tina(), tailwind()],
   site: 'https://devreggie.github.io',
   base: '/tina-astro-batutinha',
+  compressHTML: true,
 });

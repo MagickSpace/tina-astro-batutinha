@@ -9,7 +9,8 @@ var config_default = defineStaticConfig({
   // Get this from tina.io
   build: {
     outputFolder: "admin",
-    publicFolder: "public"
+    publicFolder: "public",
+    basePath: "tina-astro-batutinha"
   },
   media: {
     tina: {
@@ -23,13 +24,13 @@ var config_default = defineStaticConfig({
         name: "post",
         label: "P\xE1gina Inicial",
         path: "content/posts",
-        ui: {
+        /*ui: {
           allowedActions: {
             create: false,
-            delete: false
+            delete: false,
           },
-          router: () => "/"
-        },
+          router: () => '/',
+        },*/
         fields: [
           {
             label: "Menu",
