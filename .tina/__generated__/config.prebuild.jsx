@@ -2,9 +2,9 @@
 import { defineStaticConfig } from "tinacms";
 var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 var config_default = defineStaticConfig({
-  token: "f04e33e1e4a5840e7097e897103b9a5eb2807142",
+  token: "54ef6c6b7f34e8fb531c70143b05df071c2147a7",
   // generated on app.tina.io,
-  clientId: "8458a132-a197-4036-ad56-c104fb06350b",
+  clientId: "8be2cd18-470d-4997-bc97-bd2b8f38ebbe",
   // generated on app.tina.io
   branch,
   build: {
@@ -24,13 +24,13 @@ var config_default = defineStaticConfig({
         name: "post",
         label: "P\xE1gina Inicial",
         path: "content/posts",
-        /*ui: {
+        ui: {
           allowedActions: {
-            create: false,
-            delete: false,
+            create: true,
+            delete: true
           },
-          router: () => '/',
-        },*/
+          router: () => "/"
+        },
         fields: [
           {
             label: "Menu",
