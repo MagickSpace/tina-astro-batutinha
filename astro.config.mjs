@@ -22,7 +22,7 @@ const tina = ({
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tina(), tailwind()],
-  site: 'https://example.com',
-  base: '/dashbord',
+  site: 'https://tina-astro-batutinha.vercel.app',
+  base: '/admin',
   compressHTML: true,
 });
